@@ -10,7 +10,7 @@ O pacote não está hospedado em um repositório externo (p.ex. packagist), port
 
 No arquivo ```composer.json``` na raiz da sua aplicação, adicionar: 
         
-``` json
+``` js
    ...
 
     "repositories": {                                                                        //  <------ adicionar
