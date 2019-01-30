@@ -78,6 +78,20 @@ Adicionar a middleware de rota `OpenidLogin` no arquivo `Kernel.php`
     ...
 ```
 
+Nesse mesmo arquivo `Kernel.php`, é importante garantir que os cookies serão decriptados antes da autenticação:
+
+``` php
+    protected $middlewarePriority = [
+        \Illuminate\Session\Middleware\StartSession::class,
+        \App\Http\Middleware\EncryptCookies::class,                                         //  <---------- adicionar
+        \Illuminate\View\Middleware\ShareErrorsFromSession::class,
+        \App\Http\Middleware\Authenticate::class,
+        \Illuminate\Session\Middleware\AuthenticateSession::class,
+        \Illuminate\Routing\Middleware\SubstituteBindings::class,
+        \Illuminate\Auth\Middleware\Authorize::class,
+    ];
+```
+
 No arquivo ```/config/auth```, acrescentar os drivers do `Keycloak`:
 
 ```php
