@@ -9,16 +9,19 @@ Para projetos com login de SSO, utilizando o Keycloak.
 O pacote não está hospedado em um repositório externo (p.ex. packagist), portanto, devemos configurar um repositório local para o composer.
 
 No arquivo ```composer.json``` na raiz da sua aplicação, adicionar: 
-
+        "local": {
+            "type": "vcs",
+            "url": ""
+        }
 ``` javascript
    ...
 
-    "repositories": {                                                               //  <------ adicionar
-        "local": {                                                                  //  <------ adicionar
-            "type": "path",                                                         //  <------ adicionar
-            "url": "packages/prodabel/KeycloakAdapter"                              //  <------ adicionar
-        }                                                                           //  <------ adicionar
-    }                                                                               //  <------ adicionar
+    "repositories": {                                                                        //  <------ adicionar
+        "local": {                                                                           //  <------ adicionar
+            "type": "vcs",                                                                   //  <------ adicionar
+            "url": "https://gitlab.pbh.gov.br/prodabel-laravel-pacotes/keycloak-adapter.git" //  <------ adicionar
+        }                                                                                    //  <------ adicionar
+    }                                                                                        //  <------ adicionar
     
     ...
     
