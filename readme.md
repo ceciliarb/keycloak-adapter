@@ -1,11 +1,11 @@
 # KeycloakAdapter
 
 Adaptador de Keycloak para o Laravel. Esse adaptador utiliza os pacotes:
-``` bash
-"league/oauth2-client": "2.2.1",
-"paragonie/random_compat": "v2.0.9",
-"stevenmaguire/oauth2-keycloak": "^2.1"
-```
+
+- ["paragonie/random_compat": "v2.0.9"](https://github.com/paragonie/random_compat)
+- ["league/oauth2-client": "2.2.1"](https://github.com/thephpleague/oauth2-client)
+- ["stevenmaguire/oauth2-keycloak": "^2.1"](https://github.com/stevenmaguire/oauth2-keycloak)
+
 (as versões do `oauth2-client` e do `random_compat`foram fixadas devido a uma limitação do `oauth2-keycloak`)
 
 Para projetos com login de SSO, utilizando o Keycloak em aplicações construídas com a framework Laravel.
