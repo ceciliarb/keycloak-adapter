@@ -22,6 +22,16 @@ No arquivo ```composer.json``` na raiz da sua aplicação, adicionar:
     
     ...
     
+    "require": {
+        "php": "^7.1.3",
+        "fideloper/proxy": "^4.0",
+        "laravel/framework": "5.7.*",
+        "laravel/tinker": "^1.0",
+        "prodabel/keycloakadapter": "*"
+    },
+    
+    ...
+    
     "autoload": {
         "psr-4": {
             "Prodabel\\KeycloakAdapter\\": "packages/Prodabel/KeycloakAdapter/src", //  <------ adicionar
@@ -37,22 +47,10 @@ No arquivo ```composer.json``` na raiz da sua aplicação, adicionar:
 Agora sim, podemos baixar o pacote local, via Composer:
 
 ``` bash
-$ composer require prodabel/keycloakadapter
+$ composer update
 ```
 
 ## Configuração
-
-No arquivo ```.env```, adicionar:
-
-``` bash
-KEYCLOAK_AUTHSERVERURL=http://keycloak.qa.pbh/auth
-KEYCLOAK_REALM=teste_cecilia
-KEYCLOAK_CLIENTID=teste2_dsv
-KEYCLOAK_CLIENTSECRET=xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
-KEYCLOAK_RSA_PUBLIC_KEY=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-KEYCLOAK_REDIRECTURI=http://localhost:7000/login
-KEYCLOAK_REDIRECTLOGOUTURI=http://localhost:7000
-```
 
 No arquivo ```/config/auth```, acrescentar os drivers do `Keycloak`:
 
@@ -99,6 +97,21 @@ return [
 ];
 ```
 
+A fim de publicar as configurações do `Keycloak`, executar o comando:
+
+
+
+No arquivo ```.env```, adicionar:
+
+``` bash
+KEYCLOAK_AUTHSERVERURL=http://keycloak.qa.pbh/auth
+KEYCLOAK_REALM=teste_cecilia
+KEYCLOAK_CLIENTID=teste2_dsv
+KEYCLOAK_CLIENTSECRET=xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+KEYCLOAK_RSA_PUBLIC_KEY=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+KEYCLOAK_REDIRECTURI=http://localhost:7000/login
+KEYCLOAK_REDIRECTLOGOUTURI=http://localhost:7000
+```
 
 ## Usage
 
