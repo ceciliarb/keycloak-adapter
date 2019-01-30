@@ -27,13 +27,18 @@ KEYCLOAK_REDIRECTLOGOUTURI=http://localhost:7000
 
 No arquivo ```composer.json``` na raiz da sua aplicação, adicionar: 
 
-``` bash
+``` javascript
+   ...
+
     "repositories": {                                                               //  <------ adicionar
         "local": {                                                                  //  <------ adicionar
             "type": "path",                                                         //  <------ adicionar
             "url": "packages/prodabel/KeycloakAdapter"                              //  <------ adicionar
         }                                                                           //  <------ adicionar
     }                                                                               //  <------ adicionar
+    
+    ...
+    
     "autoload": {
         "psr-4": {
             "Prodabel\\KeycloakAdapter\\": "packages/Prodabel/KeycloakAdapter/src", //  <------ adicionar
