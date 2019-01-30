@@ -27,14 +27,14 @@ No arquivo ```composer.json``` na raiz da sua aplicação, adicionar:
         "fideloper/proxy": "^4.0",
         "laravel/framework": "5.7.*",
         "laravel/tinker": "^1.0",
-        "prodabel/keycloakadapter": "*"
+        "prodabel/keycloakadapter": "*"                                                      //  <------ adicionar
     },
     
     ...
     
     "autoload": {
         "psr-4": {
-            "Prodabel\\KeycloakAdapter\\": "packages/Prodabel/KeycloakAdapter/src", //  <------ adicionar
+            "Prodabel\\KeycloakAdapter\\": "packages/Prodabel/KeycloakAdapter/src",          //  <------ adicionar
             "App\\": "app/"
         },
         "classmap": [
