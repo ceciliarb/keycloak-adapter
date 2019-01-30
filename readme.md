@@ -106,8 +106,8 @@ return [
 ```
 
 A fim de publicar as configurações do `Keycloak`, executar o comando:
-``` bash
-$ php artisan vendor:publish --tag=Prodabel\KeycloakAdapter\KeycloakAdapterServiceProvider
+``` sh
+$ php artisan vendor:publish --provider="Prodabel\KeycloakAdapter\KeycloakAdapterServiceProvider"
 ```
 Esse comando, criará o arquivo `config/keycloak.php`
 
