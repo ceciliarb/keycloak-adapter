@@ -1,8 +1,14 @@
 # KeycloakAdapter
 
-Adaptador de Keycloak para o Laravel. 
+Adaptador de Keycloak para o Laravel. Esse adaptador utiliza os pacotes:
+``` bash
+"league/oauth2-client": "2.2.1",
+"paragonie/random_compat": "v2.0.9",
+"stevenmaguire/oauth2-keycloak": "^2.1"
+```
+(as versões do `oauth2-client` e do `random_compat`foram fixadas devido a uma limitação do `oauth2-keycloak`)
 
-Para projetos com login de SSO, utilizando o Keycloak.
+Para projetos com login de SSO, utilizando o Keycloak em aplicações construídas com a framework Laravel.
 
 
 ## Instalação
@@ -49,14 +55,6 @@ Agora sim, podemos baixar o pacote local, via Composer:
 ``` bash
 $ composer update
 ```
-Obs. Este pacote depende de 2 outros pacotes:
-``` bash
-"league/oauth2-client": "2.2.1",
-"paragonie/random_compat": "v2.0.9",
-"stevenmaguire/oauth2-keycloak": "^2.1"
-```
-As versões do `oauth2-client` e do `random_compat`foram fixadas devido a uma limitação do `oauth2-keycloak`
-
 
 ## Configuração
 
