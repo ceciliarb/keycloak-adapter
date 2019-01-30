@@ -151,10 +151,12 @@ Please see the [changelog](changelog.md) for more information on what has change
 
 ## Credits
 
-- [Cecilia Ribeiro][https://github.com/ceciliarb?tab=repositories]
+- [Cecilia Ribeiro](https://github.com/ceciliarb?tab=repositories)
 
 ## License
-license. Please see the [license file](license.md) for more information.
+
+license. 
+Please see the [license file](license.md) for more information.
 
 [ico-version]: https://img.shields.io/packagist/v/prodabel/keycloakadapter.svg?style=flat-square
 [ico-downloads]: https://img.shields.io/packagist/dt/prodabel/keycloakadapter.svg?style=flat-square
