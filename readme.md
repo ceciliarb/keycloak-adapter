@@ -13,7 +13,7 @@ Via Composer
 $ composer require prodabel/keycloakadapter
 ```
 
-No arquivo ```.env```
+No arquivo ```.env```:
 
 ``` bash
 KEYCLOAK_AUTHSERVERURL=http://keycloak.qa.pbh/auth
@@ -24,6 +24,27 @@ KEYCLOAK_RSA_PUBLIC_KEY=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 KEYCLOAK_REDIRECTURI=http://localhost:7000/login
 KEYCLOAK_REDIRECTLOGOUTURI=http://localhost:7000
 ```
+
+No arquivo ```composer.json``` na raiz da sua aplicação, adicionar: 
+
+``` bash
+    "repositories": {                                                               //  <------ adicionar
+        "local": {                                                                  //  <------ adicionar
+            "type": "path",                                                         //  <------ adicionar
+            "url": "packages/prodabel/KeycloakAdapter"                              //  <------ adicionar
+        }                                                                           //  <------ adicionar
+    }                                                                               //  <------ adicionar
+    "autoload": {
+        "psr-4": {
+            "Prodabel\\KeycloakAdapter\\": "packages/Prodabel/KeycloakAdapter/src", //  <------ adicionar
+            "App\\": "app/"
+        },
+        "classmap": [
+            "database/seeds",
+            "database/factories"
+        ]
+    },
+``` 
 
 ## Usage
 
