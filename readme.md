@@ -6,7 +6,7 @@ Para projetos com login de SSO, utilizando o Keycloak.
 
 
 ## Instalação
-O pacote não está hospedado em um repositório externo (p.ex. packagist), portanto, devemos configurar um repositório local para o composer:
+O pacote não está hospedado em um repositório externo (p.ex. packagist), portanto, devemos configurar um repositório local para o composer.
 
 No arquivo ```composer.json``` na raiz da sua aplicação, adicionar: 
 
@@ -34,13 +34,15 @@ No arquivo ```composer.json``` na raiz da sua aplicação, adicionar:
     },
 ``` 
 
-Via Composer
+Agora sim, podemos baixar o pacote local, via Composer:
 
 ``` bash
 $ composer require prodabel/keycloakadapter
 ```
 
-No arquivo ```.env```:
+## Configuração
+
+No arquivo ```.env```, adicionar:
 
 ``` bash
 KEYCLOAK_AUTHSERVERURL=http://keycloak.qa.pbh/auth
@@ -50,6 +52,51 @@ KEYCLOAK_CLIENTSECRET=xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
 KEYCLOAK_RSA_PUBLIC_KEY=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 KEYCLOAK_REDIRECTURI=http://localhost:7000/login
 KEYCLOAK_REDIRECTLOGOUTURI=http://localhost:7000
+```
+
+No arquivo ```/config/auth```, acrescentar os drivers do `Keycloak`:
+
+```php
+return [
+    'defaults' => [
+        'guard' => 'keycloak',                          //  <------ adicionar
+        'passwords' => 'users',
+    ],
+    'guards' => [
+        'web' => [
+            'driver' => 'session',
+            'provider' => 'users',
+        ],
+
+        'api' => [
+            'driver' => 'token',
+            'provider' => 'users',
+        ],
+
+        'keycloak' => [
+            'driver' => 'kc_driver_guard',               //  <------ adicionar
+            'provider' => 'kc_users',                    //  <------ adicionar
+        ],
+    ],
+    'providers' => [
+        'users' => [
+            'driver' => 'eloquent',
+            'model' => App\User::class,
+        ],
+
+        'kc_users' => [
+            'driver' => 'kc_driver_provider',            //  <------ adicionar
+        ],
+    ],
+    'passwords' => [
+        'users' => [
+            'provider' => 'users',
+            'table' => 'password_resets',
+            'expire' => 60,
+        ],
+    ],
+
+];
 ```
 
 
