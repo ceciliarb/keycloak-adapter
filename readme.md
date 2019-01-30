@@ -54,7 +54,7 @@ Obs. Este pacote depende de 2 outros pacotes:
     "league/oauth2-client": "2.2.1",
     "paragonie/random_compat": "v2.0.9",
     "stevenmaguire/oauth2-keycloak": "^2.1"
-```oauth2-keycloak
+```
 As versões do `oauth2-client` e do `random_compat`foram fixadas devido a uma limitação do `oauth2-keycloak`
 
 
