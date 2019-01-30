@@ -6,24 +6,7 @@ Para projetos com login de SSO, utilizando o Keycloak.
 
 
 ## Instalação
-
-Via Composer
-
-``` bash
-$ composer require prodabel/keycloakadapter
-```
-
-No arquivo ```.env```:
-
-``` bash
-KEYCLOAK_AUTHSERVERURL=http://keycloak.qa.pbh/auth
-KEYCLOAK_REALM=teste_cecilia
-KEYCLOAK_CLIENTID=teste2_dsv
-KEYCLOAK_CLIENTSECRET=xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
-KEYCLOAK_RSA_PUBLIC_KEY=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-KEYCLOAK_REDIRECTURI=http://localhost:7000/login
-KEYCLOAK_REDIRECTLOGOUTURI=http://localhost:7000
-```
+O pacote não está hospedado em um repositório externo (p.ex. packagist), portanto, devemos configurar um repositório local para o composer:
 
 No arquivo ```composer.json``` na raiz da sua aplicação, adicionar: 
 
@@ -50,6 +33,25 @@ No arquivo ```composer.json``` na raiz da sua aplicação, adicionar:
         ]
     },
 ``` 
+
+Via Composer
+
+``` bash
+$ composer require prodabel/keycloakadapter
+```
+
+No arquivo ```.env```:
+
+``` bash
+KEYCLOAK_AUTHSERVERURL=http://keycloak.qa.pbh/auth
+KEYCLOAK_REALM=teste_cecilia
+KEYCLOAK_CLIENTID=teste2_dsv
+KEYCLOAK_CLIENTSECRET=xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+KEYCLOAK_RSA_PUBLIC_KEY=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+KEYCLOAK_REDIRECTURI=http://localhost:7000/login
+KEYCLOAK_REDIRECTLOGOUTURI=http://localhost:7000
+```
+
 
 ## Usage
 
