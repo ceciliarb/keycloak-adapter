@@ -143,8 +143,6 @@ KEYCLOAK_REDIRECTURI=http://localhost:7000/login
 KEYCLOAK_REDIRECTLOGOUTURI=http://localhost:7000
 ```
 
-## Usage
-
 ## Change log
 
 Please see the [changelog](changelog.md) for more information on what has changed recently.
