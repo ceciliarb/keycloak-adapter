@@ -10,7 +10,7 @@ O pacote não está hospedado em um repositório externo (p.ex. packagist), port
 
 No arquivo ```composer.json``` na raiz da sua aplicação, adicionar: 
         
-``` javascript
+```
    ...
 
     "repositories": {                                                                        //  <------ adicionar
@@ -106,6 +106,9 @@ return [
 ```
 
 A fim de publicar as configurações do `Keycloak`, executar o comando:
+``` bash
+
+```
 
 
 
