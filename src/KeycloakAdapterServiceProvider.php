@@ -22,9 +22,9 @@ class KeycloakAdapterServiceProvider extends ServiceProvider
         $this->publishes([
             __DIR__.'/../config/keycloak.php' => config_path('keycloak.php'),
         ]);
-        $this->mergeConfigFrom(
-            __DIR__.'/../config/auth.php', 'auth'
-        );
+        // $this->mergeConfigFrom(
+        //     __DIR__.'/../config/auth.php', 'auth'
+        // );
     }
 
     /**
