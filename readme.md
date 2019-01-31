@@ -63,7 +63,7 @@ Para projetos com login de SSO, utilizando o Keycloak em aplicações construíd
     - o arquivo `config/keycloak.php`, com configurações do servidor Keycloak; 
     - o arquivo `config/keycloak_auth.php`, com configurações para a autenticação em Laravel. 
     
-      Para que a autentição funcione automaticamente, substitua o arquivo `config/auth.php` pelo arquivo `config/keycloak_auth.php`.
+      Para que a autenticação funcione automaticamente, substitua o arquivo `config/auth.php` pelo arquivo `config/keycloak_auth.php`.
       
       *(O Laravel não permite a substituição automática para evitar que as configurações do desenvolvedor sejam sobrescritas erradamente)*
 2. No arquivo ```.env```, adicionar:
