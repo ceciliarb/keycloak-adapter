@@ -75,6 +75,7 @@ Para projetos com login de SSO, utilizando o Keycloak em aplicações construíd
     KEYCLOAK_REDIRECTURI=http://localhost:7000/login
     KEYCLOAK_REDIRECTLOGOUTURI=http://localhost:7000
     ```
+    Preencher as informações com os parâmetros da sua aplicação.
 3. Por fim, é importante garantir que os cookies sejam sempre decriptados antes da autenticação. No arquivo `app/Http/Kernel.php`:
     ``` php
         protected $middlewarePriority = [
