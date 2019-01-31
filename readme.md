@@ -16,14 +16,13 @@ Para projetos com login de SSO, utilizando o Keycloak em aplicações construíd
    No arquivo ```composer.json``` na raiz da sua aplicação, adicionar: 
     ``` js
        ...
-    <b>
+     // adicionar repositorio local
         "repositories": {
             "local": {
                 "type": "vcs",
                 "url": "https://gitlab.pbh.gov.br/prodabel-laravel-pacotes/keycloak-adapter.git"
             }
         }
-    </b>        
         ...
         
         "require": {
@@ -31,14 +30,14 @@ Para projetos com login de SSO, utilizando o Keycloak em aplicações construíd
             "fideloper/proxy": "^4.0",
             "laravel/framework": "5.7.*",
             "laravel/tinker": "^1.0",
-            "prodabel/keycloakadapter": "*"                                                      //  <------ adicionar
+            "prodabel/keycloakadapter": "*"                                              //  <------ adicionar
         },
         
         ...
         
         "autoload": {
             "psr-4": {
-                "Prodabel\\KeycloakAdapter\\": "packages/Prodabel/KeycloakAdapter/src",          //  <------ adicionar
+                "Prodabel\\KeycloakAdapter\\": "packages/Prodabel/KeycloakAdapter/src",  //  <------ adicionar
                 "App\\": "app/"
             },
             "classmap": [
