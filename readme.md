@@ -81,7 +81,7 @@ KEYCLOAK_REDIRECTURI=http://localhost:7000/login
 KEYCLOAK_REDIRECTLOGOUTURI=http://localhost:7000
 ```
 
-Por fim, é importante garantir que os cookies serão decriptados antes da autenticação. No arquivo `Kernel.php`:
+Por fim, é importante garantir que os cookies sejam sempre decriptados antes da autenticação. No arquivo `app/Http/Kernel.php`:
 
 ``` php
     protected $middlewarePriority = [
