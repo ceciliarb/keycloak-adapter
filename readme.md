@@ -62,8 +62,9 @@ A fim de publicar as configurações do `Keycloak`, executar o comando:
 ``` sh
 $ php artisan vendor:publish --provider="Prodabel\KeycloakAdapter\KeycloakAdapterServiceProvider"
 ```
-Esse comando, criará o arquivo `config/keycloak.php`, com configurações do servidor Keycloak; 
-e o arquivo `config/keycloak_auth.php`, com configurações para a autenticação em Laravel. 
+Esse comando, criará:
+- o arquivo `config/keycloak.php`, com configurações do servidor Keycloak; 
+- o arquivo `config/keycloak_auth.php`, com configurações para a autenticação em Laravel. 
 Para que a autentição funcione automaticamente, substitua o arquivo `config/auth.php` e pelo arquivo `config/keycloak_auth.php`.
 (O Laravel não permite a substituição automática para evitar que as configurações do desenvolvedor sejam sobrescritas erradamente)
 
