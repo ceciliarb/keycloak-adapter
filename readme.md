@@ -14,7 +14,7 @@ Para projetos com login de SSO, utilizando o Keycloak em aplicações construíd
 ## Instalação
 1. O pacote não está hospedado em um repositório externo (p.ex. packagist), portanto, devemos configurar um repositório local para o composer.
    No arquivo ```composer.json``` na raiz da sua aplicação, adicionar: 
-    <pre><code>
+    ``` js
        ...
     <b>
         "repositories": {
@@ -46,7 +46,7 @@ Para projetos com login de SSO, utilizando o Keycloak em aplicações construíd
                 "database/factories"
             ]
         },
-    </pre></code>
+    ```
 2. Agora sim, podemos baixar o pacote local, via Composer:
 
     ``` bash
