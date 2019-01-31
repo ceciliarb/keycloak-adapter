@@ -28,7 +28,8 @@ class OpenIdLogin
         // Check given state against previously stored one to mitigate CSRF attack
         } elseif (empty($request->state) || ($request->state !== session('oauth2state'))) {
             $request->session()->forget('oauth2state');
-            exit('Invalid state, make sure HTTP sessions are enabled.');
+            echo('Invalid state, make sure HTTP sessions are enabled.');
+            return redirect('/login');
 
         // Try to get an access token (using the authorization code grant)
         } else {
