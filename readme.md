@@ -14,7 +14,7 @@ Para projetos com login de SSO, utilizando o Keycloak em aplicações construíd
 ## Instalação
 O pacote não está hospedado em um repositório externo (p.ex. packagist), portanto, devemos configurar um repositório local para o composer.
 
-No arquivo ```composer.json``` na raiz da sua aplicação, adicionar: 
+1. No arquivo ```composer.json``` na raiz da sua aplicação, adicionar: 
         
 ``` js
    ...
@@ -50,7 +50,7 @@ No arquivo ```composer.json``` na raiz da sua aplicação, adicionar:
     },
 ``` 
 
-Agora sim, podemos baixar o pacote local, via Composer:
+2. Agora sim, podemos baixar o pacote local, via Composer:
 
 ``` bash
 $ composer update
@@ -58,7 +58,7 @@ $ composer update
 
 ## Configuração
 
-A fim de publicar as configurações do `Keycloak`, executar o comando:
+1. A fim de publicar as configurações do `Keycloak`, executar o comando:
 ``` sh
 $ php artisan vendor:publish --provider="Prodabel\KeycloakAdapter\KeycloakAdapterServiceProvider"
 ```
@@ -69,7 +69,7 @@ Esse comando, criará:
   Para que a autentição funcione automaticamente, substitua o arquivo `config/auth.php` pelo arquivo `config/keycloak_auth.php`.
   *(O Laravel não permite a substituição automática para evitar que as configurações do desenvolvedor sejam sobrescritas erradamente)*
 
-No arquivo ```.env```, adicionar:
+2. No arquivo ```.env```, adicionar:
 
 ``` bash
 KEYCLOAK_AUTHSERVERURL=http://keycloak.qa.pbh/auth
@@ -81,7 +81,7 @@ KEYCLOAK_REDIRECTURI=http://localhost:7000/login
 KEYCLOAK_REDIRECTLOGOUTURI=http://localhost:7000
 ```
 
-Por fim, é importante garantir que os cookies sejam sempre decriptados antes da autenticação. No arquivo `app/Http/Kernel.php`:
+3. Por fim, é importante garantir que os cookies sejam sempre decriptados antes da autenticação. No arquivo `app/Http/Kernel.php`:
 
 ``` php
     protected $middlewarePriority = [
