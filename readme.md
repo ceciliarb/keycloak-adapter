@@ -64,6 +64,7 @@ Para projetos com login de SSO, utilizando o Keycloak em aplicações construíd
     - o arquivo `config/keycloak_auth.php`, com configurações para a autenticação em Laravel. 
     
       Para que a autentição funcione automaticamente, substitua o arquivo `config/auth.php` pelo arquivo `config/keycloak_auth.php`.
+      
       *(O Laravel não permite a substituição automática para evitar que as configurações do desenvolvedor sejam sobrescritas erradamente)*
 2. No arquivo ```.env```, adicionar:
     ``` bash
@@ -75,7 +76,7 @@ Para projetos com login de SSO, utilizando o Keycloak em aplicações construíd
     KEYCLOAK_REDIRECTURI=http://localhost:7000/login
     KEYCLOAK_REDIRECTLOGOUTURI=http://localhost:7000
     ```
-    Preencher as informações com os parâmetros da sua aplicação.
+    *(Preencher as informações com os parâmetros da sua aplicação)*
 3. Por fim, é importante garantir que os cookies sejam sempre decriptados antes da autenticação. No arquivo `app/Http/Kernel.php`:
     ``` php
         protected $middlewarePriority = [
