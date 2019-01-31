@@ -13,18 +13,12 @@ class KeycloakAdapterServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        // $this->loadTranslationsFrom(__DIR__.'/../resources/lang', 'prodabel');
-        // $this->loadViewsFrom(__DIR__.'/../resources/views', 'prodabel');
-        // $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
-        // $this->loadRoutesFrom(__DIR__.'/routes.php');
-
         $this->loadRoutesFrom(__DIR__.'/routes.php');
         $this->publishes([
             __DIR__.'/../config/keycloak.php' => config_path('keycloak.php'),
         ]);
-        // $this->mergeConfigFrom(
-        //     __DIR__.'/../config/auth.php', 'auth'
-        // );
+        $router = $this->app['router'];
+        $router->aliasMiddleware('openid.login', \Prodabel\KeycloakAdapter\OpenIdLogin::class);
     }
 
     /**
