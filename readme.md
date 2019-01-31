@@ -13,43 +13,40 @@ Para projetos com login de SSO, utilizando o Keycloak em aplicações construíd
 
 ## Instalação
 1. O pacote não está hospedado em um repositório externo (p.ex. packagist), portanto, devemos configurar um repositório local para o composer.
-
    No arquivo ```composer.json``` na raiz da sua aplicação, adicionar: 
+    ``` js
+       ...
+    
+        "repositories": {                                                                        //  <------ adicionar
+            "local": {                                                                           //  <------ adicionar
+                "type": "vcs",                                                                   //  <------ adicionar
+                "url": "https://gitlab.pbh.gov.br/prodabel-laravel-pacotes/keycloak-adapter.git" //  <------ adicionar
+            }                                                                                    //  <------ adicionar
+        }                                                                                        //  <------ adicionar
         
-``` js
-   ...
-
-    "repositories": {                                                                        //  <------ adicionar
-        "local": {                                                                           //  <------ adicionar
-            "type": "vcs",                                                                   //  <------ adicionar
-            "url": "https://gitlab.pbh.gov.br/prodabel-laravel-pacotes/keycloak-adapter.git" //  <------ adicionar
-        }                                                                                    //  <------ adicionar
-    }                                                                                        //  <------ adicionar
-    
-    ...
-    
-    "require": {
-        "php": "^7.1.3",
-        "fideloper/proxy": "^4.0",
-        "laravel/framework": "5.7.*",
-        "laravel/tinker": "^1.0",
-        "prodabel/keycloakadapter": "*"                                                      //  <------ adicionar
-    },
-    
-    ...
-    
-    "autoload": {
-        "psr-4": {
-            "Prodabel\\KeycloakAdapter\\": "packages/Prodabel/KeycloakAdapter/src",          //  <------ adicionar
-            "App\\": "app/"
+        ...
+        
+        "require": {
+            "php": "^7.1.3",
+            "fideloper/proxy": "^4.0",
+            "laravel/framework": "5.7.*",
+            "laravel/tinker": "^1.0",
+            "prodabel/keycloakadapter": "*"                                                      //  <------ adicionar
         },
-        "classmap": [
-            "database/seeds",
-            "database/factories"
-        ]
-    },
-``` 
-
+        
+        ...
+        
+        "autoload": {
+            "psr-4": {
+                "Prodabel\\KeycloakAdapter\\": "packages/Prodabel/KeycloakAdapter/src",          //  <------ adicionar
+                "App\\": "app/"
+            },
+            "classmap": [
+                "database/seeds",
+                "database/factories"
+            ]
+        },
+    ``` 
 2. Agora sim, podemos baixar o pacote local, via Composer:
 
 ``` bash
