@@ -22,9 +22,7 @@ class KeycloakAdapterServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->loadRoutesFrom(__DIR__.'/routes.php');
-        $this->mergeConfigFrom([
-            __DIR__.'/../config/auth.php' => config_path('auth.php'),
-        ]);
+        $this->mergeConfigFrom(__DIR__.'/../config/auth.php', 'auth');
         $this->publishes([
             __DIR__.'/../config/keycloak.php' => config_path('keycloak.php'),
         ]);
