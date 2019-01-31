@@ -6,6 +6,14 @@ use Illuminate\Support\ServiceProvider;
 
 class KeycloakAdapterServiceProvider extends ServiceProvider
 {
+    //sobrescrevendo a fim de publicar configurações de auth
+    protected function mergeConfigFrom($path, $key)
+    {
+        $config = $this->app['config']->get($key, []);
+
+        $this->app['config']->set($key, array_replace_recursive(require $path, $config));
+    }
+
     /**
      * Perform post-registration booting of services.
      *
@@ -14,6 +22,9 @@ class KeycloakAdapterServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->loadRoutesFrom(__DIR__.'/routes.php');
+        $this->mergeConfigFrom([
+            __DIR__.'/../config/auth.php' => config_path('auth.php'),
+        ]);
         $this->publishes([
             __DIR__.'/../config/keycloak.php' => config_path('keycloak.php'),
         ]);
