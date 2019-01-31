@@ -15,7 +15,9 @@ class KeycloakAdapterServiceProvider extends ServiceProvider
     {
         $this->loadRoutesFrom(__DIR__.'/routes.php');
         //sobrescrevendo o config/auth.php!!!
-        $this->app['config']->set('auth::config', require __DIR__.'/../config/auth.php');
+        $this->mergeConfigFrom(__DIR__.'/../config/auth_defaults.php' , 'auth.defaults');
+        $this->mergeConfigFrom(__DIR__.'/../config/auth_guards.php' , 'auth.guards');
+        $this->mergeConfigFrom(__DIR__.'/../config/auth_providers.php' , 'auth.providers');
         $this->publishes([
             __DIR__.'/../config/keycloak.php' => config_path('keycloak.php'),
         ]);
