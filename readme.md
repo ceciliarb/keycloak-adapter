@@ -92,11 +92,13 @@ Para projetos com login de SSO, utilizando o Keycloak em aplicações construíd
 
 ## Informações adicionais
 O pacote [`prodabel/keycloakadapter`](https://gitlab.pbh.gov.br/prodabel-laravel-pacotes/keycloak-adapter) já registra as seguintes rotas:
-- ´/oi´  => Rota de teste para usuários **não autenticados**. Imprime ´"Hello World!"´ na tela.
-- ´/teste´  => Rota de teste para usuários **autenticados**. Imprime ´"rota protegida / usuário autenticado"´ na tela.
-- ´/home´  => Rota para usuários **autenticados**. Imprime os dados do usuário logado na tela.
-- ´/login´  => Rota de login. Se autenticado, redireciona para a tela ´/home´, caso contrário, redireciona para o login do Keycloak.
-- ´/logout´  => Rota de logout. Realiza logout no Keycloak, limpa os cookies e a sessão.
+- `/oi`  => Rota de teste para usuários **não autenticados**. Imprime `"Hello World!"` na tela.
+- `/teste`  => Rota de teste para usuários **autenticados**. Imprime `"rota protegida / usuário autenticado"` na tela.
+- `/home`  => Rota para usuários **autenticados**. Imprime os dados do usuário logado na tela.
+- `/login`  => Rota de login. Se autenticado, redireciona para a tela `/home`, caso contrário, redireciona para o login do Keycloak.
+- `/logout`  => Rota de logout. Realiza logout no Keycloak, limpa os cookies e a sessão.
+
+Uma vez que o pacote esteja instalado e configurado, você já pode acessar essas rotas, ou sobrescrevê-las.
 
 ## Change log
 
