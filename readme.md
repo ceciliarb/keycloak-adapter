@@ -58,70 +58,14 @@ $ composer update
 
 ## Configuração
 
-No arquivo `Kernel.php`, é importante garantir que os cookies serão decriptados antes da autenticação:
-
-``` php
-    protected $middlewarePriority = [
-        \Illuminate\Session\Middleware\StartSession::class,
-        \App\Http\Middleware\EncryptCookies::class,                                         //  <---------- adicionar
-        \Illuminate\View\Middleware\ShareErrorsFromSession::class,
-        \App\Http\Middleware\Authenticate::class,
-        \Illuminate\Session\Middleware\AuthenticateSession::class,
-        \Illuminate\Routing\Middleware\SubstituteBindings::class,
-        \Illuminate\Auth\Middleware\Authorize::class,
-    ];
-```
-
-No arquivo ```/config/auth```, acrescentar os drivers do `Keycloak`:
-
-```php
-return [
-    'defaults' => [
-        'guard' => 'keycloak',                          //  <------ adicionar
-        'passwords' => 'users',
-    ],
-    'guards' => [
-        'web' => [
-            'driver' => 'session',
-            'provider' => 'users',
-        ],
-
-        'api' => [
-            'driver' => 'token',
-            'provider' => 'users',
-        ],
-
-        'keycloak' => [
-            'driver' => 'kc_driver_guard',               //  <------ adicionar
-            'provider' => 'kc_users',                    //  <------ adicionar
-        ],
-    ],
-    'providers' => [
-        'users' => [
-            'driver' => 'eloquent',
-            'model' => App\User::class,
-        ],
-
-        'kc_users' => [
-            'driver' => 'kc_driver_provider',            //  <------ adicionar
-        ],
-    ],
-    'passwords' => [
-        'users' => [
-            'provider' => 'users',
-            'table' => 'password_resets',
-            'expire' => 60,
-        ],
-    ],
-
-];
-```
-
 A fim de publicar as configurações do `Keycloak`, executar o comando:
 ``` sh
 $ php artisan vendor:publish --provider="Prodabel\KeycloakAdapter\KeycloakAdapterServiceProvider"
 ```
-Esse comando, criará o arquivo `config/keycloak.php`
+Esse comando, criará o arquivo `config/keycloak.php`, com configurações do servidor Keycloak; 
+e o arquivo `config/keycloak_auth.php`, com configurações para a autenticação em Laravel. 
+Para que a autentição funcione automaticamente, substitua o arquivo `config/auth.php` e pelo arquivo `config/keycloak_auth.php`.
+(O Laravel não permite a substituição automática para evitar que as configurações do desenvolvedor sejam sobrescritas erradamente)
 
 No arquivo ```.env```, adicionar:
 
@@ -133,6 +77,20 @@ KEYCLOAK_CLIENTSECRET=xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
 KEYCLOAK_RSA_PUBLIC_KEY=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 KEYCLOAK_REDIRECTURI=http://localhost:7000/login
 KEYCLOAK_REDIRECTLOGOUTURI=http://localhost:7000
+```
+
+Por fim, é importante garantir que os cookies serão decriptados antes da autenticação. No arquivo `Kernel.php`:
+
+``` php
+    protected $middlewarePriority = [
+        \Illuminate\Session\Middleware\StartSession::class,
+        \App\Http\Middleware\EncryptCookies::class,                 //  <---------- adicionar
+        \Illuminate\View\Middleware\ShareErrorsFromSession::class,
+        \App\Http\Middleware\Authenticate::class,
+        \Illuminate\Session\Middleware\AuthenticateSession::class,
+        \Illuminate\Routing\Middleware\SubstituteBindings::class,
+        \Illuminate\Auth\Middleware\Authorize::class,
+    ];
 ```
 
 ## Change log
