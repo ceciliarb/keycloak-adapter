@@ -57,28 +57,8 @@ $ composer update
 ```
 
 ## Configuração
-Adicionar a middleware de rota `OpenidLogin` no arquivo `Kernel.php`
 
-``` php
-    ...
-    
-    protected $routeMiddleware = [
-        'auth' => \App\Http\Middleware\Authenticate::class,
-        'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
-        'bindings' => \Illuminate\Routing\Middleware\SubstituteBindings::class,
-        'cache.headers' => \Illuminate\Http\Middleware\SetCacheHeaders::class,
-        'can' => \Illuminate\Auth\Middleware\Authorize::class,
-        'guest' => \App\Http\Middleware\RedirectIfAuthenticated::class,
-        'signed' => \Illuminate\Routing\Middleware\ValidateSignature::class,
-        'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
-        'openid.login' => \Prodabel\KeycloakAdapter\OpenIdLogin::class,                     //  <---------- adicionar
-        'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
-    ];
-    
-    ...
-```
-
-Nesse mesmo arquivo `Kernel.php`, é importante garantir que os cookies serão decriptados antes da autenticação:
+No arquivo `Kernel.php`, é importante garantir que os cookies serão decriptados antes da autenticação:
 
 ``` php
     protected $middlewarePriority = [
