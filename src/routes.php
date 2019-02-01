@@ -14,9 +14,9 @@ Route::group(['middleware' => ['web']], function () {
     Route::middleware('auth')->group(function() {
         Route::get('teste', function() {  return 'rota protegida / usuário autenticado'; })->name('teste');
 
-        Route::get('home', function() {
+        Route::get('infousu', function() {
             return Auth::user()->toArray();
-        })->name('home');
+        })->name('infousu');
     });
 
     Route::get('logout', function (Request $request) {
