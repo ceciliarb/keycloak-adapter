@@ -30,14 +30,16 @@ Para projetos com login de SSO, utilizando o Keycloak em aplicações construíd
             "fideloper/proxy": "^4.0",
             "laravel/framework": "5.7.*",
             "laravel/tinker": "^1.0",
-            "prodabel/keycloakadapter": "*"                                              //  <------ adicionar
+            // adicionar pacote
+            "prodabel/keycloakadapter": "*"
         },
         
         ...
         
         "autoload": {
             "psr-4": {
-                "Prodabel\\KeycloakAdapter\\": "packages/Prodabel/KeycloakAdapter/src",  //  <------ adicionar
+                // adicionar classe no autoload
+                "Prodabel\\KeycloakAdapter\\": "packages/Prodabel/KeycloakAdapter/src",
                 "App\\": "app/"
             },
             "classmap": [
@@ -80,7 +82,8 @@ Para projetos com login de SSO, utilizando o Keycloak em aplicações construíd
     ``` php
         protected $middlewarePriority = [
             \Illuminate\Session\Middleware\StartSession::class,
-            \App\Http\Middleware\EncryptCookies::class,                 //  <---------- adicionar
+            // adicionar middleware no array de prioridades
+            \App\Http\Middleware\EncryptCookies::class,
             \Illuminate\View\Middleware\ShareErrorsFromSession::class,
             \App\Http\Middleware\Authenticate::class,
             \Illuminate\Session\Middleware\AuthenticateSession::class,
