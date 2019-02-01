@@ -16,7 +16,7 @@ Para projetos com login de SSO, utilizando o Keycloak em aplicações construíd
    No arquivo ```composer.json``` na raiz da sua aplicação, adicionar: 
     ``` js
        ...
-     // adicionar repositorio local
+       // adicionar repositorio local
         "repositories": {
             "local": {
                 "type": "vcs",
