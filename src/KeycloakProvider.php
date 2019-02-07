@@ -14,7 +14,7 @@ class KeycloakProvider extends Keycloak
             'client_id'     => $this->clientId,
             'client_secret' => $this->clientSecret,
             'redirect_uri'  => $this->redirectUri,
-            'audience'      => 'teste2_dsv',
+            'audience'      => $this->clientId,
             'response_mode' => 'permissions',
             // 'permission' => 'pagina1',
             "grant_type"    => "urn:ietf:params:oauth:grant-type:uma-ticket"
