@@ -66,14 +66,15 @@ class User implements Authenticatable
             $permissions = $this->kc_provider->getPermissions($token);
 
         } catch(\Exception $e) {
-            if(!str_contains($e->getMessage(), 'access_denied')) {
+            if(str_contains($e->getMessage(), 'does not support permissions')) {
+                $permissions = [];
+            } else if(!str_contains($e->getMessage(), 'access_denied')) {
                 try {
                     $token = $this->kc_provider->getAccessToken('refresh_token', ['refresh_token' => $token->getRefreshToken()]);
                 } catch(\Exception $e) {
                     return null;
                 }
             }
-
         }
 
         if($arr_user) {
