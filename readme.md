@@ -23,7 +23,7 @@ Para projetos com login de SSO, utilizando o Keycloak em aplicações construíd
                 "type": "vcs",
                 "url": "https://gitlab.pbh.gov.br/prodabel-laravel-pacotes/keycloak-adapter.git"
             }
-        }
+        },
         ...
         
         "require": {
