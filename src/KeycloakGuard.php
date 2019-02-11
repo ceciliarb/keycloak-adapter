@@ -41,10 +41,10 @@ class KeycloakGuard implements Guard
     {
         $token = $this->request->bearerToken();
         if(!$token) {
-            if(Cookie::has('access_token') && Cookie::get('refresh_token') && Cookie::get('expires')) {
-                $token = new AccessToken(['access_token'  => Cookie::get('access_token'),
-                                          'refresh_token' => Cookie::get('refresh_token'),
-                                          'expires'       => Cookie::get('expires')]);
+            if($this->request->cookie('access_token') && $this->request->cookie('refresh_token') && $this->request->cookie('expires')) {
+                $token = new AccessToken(['access_token'  => $this->request->cookie('access_token'),
+                                          'refresh_token' => $this->request->cookie('refresh_token'),
+                                          'expires'       => $this->request->cookie('expires')]);
             } else {
                 return null;
             }
