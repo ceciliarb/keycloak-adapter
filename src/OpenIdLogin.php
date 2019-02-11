@@ -35,10 +35,8 @@ class OpenIdLogin
         } else {
             try {
                 $token = $kc_provider->getAccessToken('authorization_code', [ "code" => $request->code ]);
-                $access_token  = cookie('access_token' , $token->getToken());
-                $refresh_token = cookie('refresh_token', $token->getRefreshToken());
-                $expires       = cookie('expires'      , $token->getExpires());
-                return redirect('/home')->withCookie($access_token)->withCookie($refresh_token)->withCookie($expires);
+                $token = cookie()->forever('token', $token);
+                return redirect('/home')->withCookie($token);
 
             } catch (\Exception $e) {
                 exit('Failed to get access token: '.$e->getMessage());
