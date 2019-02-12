@@ -69,7 +69,7 @@ class User implements Authenticatable
             $arr_user    = $this->kc_provider->getResourceOwner($token);
             $permissions = $this->kc_provider->getPermissions($token);
             $allRoles    = $this->kc_provider->getRoles($token);
-            $myRoles     = $allRoles['resource_access'][$clientId]['roles'];
+            $myRoles     = in_array($clientId, $allRoles['resource_access']) ? $allRoles['resource_access'][$clientId]['roles'] : [];
 
         } catch(\Exception $e) {
             if(str_contains($e->getMessage(), 'does not support permissions')) {
