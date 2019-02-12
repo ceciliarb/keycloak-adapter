@@ -20,7 +20,8 @@ class User implements Authenticatable
     protected $locale;
     protected $family_name;
     protected $email;
-    protected $roles;
+    protected $allRoles;
+    protected $myRoles;
     protected $permissions;
 
     public function __construct(Keycloak $kc_provider, array $options=[])
@@ -61,9 +62,14 @@ class User implements Authenticatable
         }
         $arr_user    = null;
         $permissions = null;
+        $allRoles    = null;
+        $myRoles     = null;
         try {
+            $clientId    = config('keycloak.clientId');
             $arr_user    = $this->kc_provider->getResourceOwner($token);
             $permissions = $this->kc_provider->getPermissions($token);
+            $allRoles    = $this->kc_provider->getRoles($token);
+            $myRoles     = $allRoles['resource_access'][$clientId]['roles'];
 
         } catch(\Exception $e) {
             if(str_contains($e->getMessage(), 'does not support permissions')) {
@@ -90,7 +96,8 @@ class User implements Authenticatable
             $this->locale             = $arr_user['locale'] ?? '';
             $this->family_name        = $arr_user['family_name'] ?? '';
             $this->email              = $arr_user['email'] ?? '';
-            $this->roles              = $arr_user[$this->rolesName] ?? [];
+            $this->allRoles           = $arr_user[$this->rolesName] ?? $allRoles;
+            $this->myRoles            = $myRoles;
             $this->permissions        = $permissions ?? [];
         }
         return $this;
@@ -141,7 +148,8 @@ class User implements Authenticatable
             'locale'             => $this->locale,
             'family_name'        => $this->family_name,
             'email'              => $this->email,
-            'roles'              => $this->roles,
+            'allRoles'           => $this->allRoles,
+            'roles'              => $this->myRoles,
             'permissions'        => $this->permissions,
         ];
     }

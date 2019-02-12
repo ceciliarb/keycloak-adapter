@@ -14,7 +14,7 @@ Route::group(['middleware' => ['web']], function () {
         Route::get('teste', function() {  return 'rota protegida / usuário autenticado'; })->name('teste');
 
         Route::get('infousu', function() {  return Auth::user()->toArray(); })->name('infousu');
-        
+
         Route::get('logout', function (Request $request) {
             $Keycloak = resolve('Keycloak');
             $state = session('oauth2state');
@@ -25,4 +25,5 @@ Route::group(['middleware' => ['web']], function () {
     });
 
 });
+
 

@@ -39,6 +39,7 @@ class KeycloakAdapterServiceProvider extends ServiceProvider
                 'clientId' => config('keycloak.clientId'),
                 'clientSecret' => config('keycloak.clientSecret'),
                 'redirectUri' => config('keycloak.redirectUri'),
+                'scope'       => "openid,profile,roles",
             ]);
         });
 
