@@ -35,6 +35,7 @@ class OpenIdLogin
         } else {
             try {
                 $token = $kc_provider->getAccessToken('authorization_code', [ "code" => $request->code ]);
+                session(['openid_token' => $token]);
                 $token = cookie()->forever('token', $token);
                 return redirect('/home')->withCookie($token);
 

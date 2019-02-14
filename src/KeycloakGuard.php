@@ -39,17 +39,22 @@ class KeycloakGuard implements Guard
 
     public function getTokenForRequest()
     {
-        $token = $this->request->bearerToken();
-        if(!$token) {
-            if($this->request->cookie('token')) {
+        $token_bearer  = $this->request->bearerToken();
+        $token_session = session('openid_token');
+        $token_cookie  = $this->request->cookie('token');
+
+        if($token_bearer) {
+            $token = new AccessToken(['access_token' => $token_bearer]);
+
+        } else if($token_session) {
+            $token = $token_session;
+
+        } else if($token_cookie) {
                 $token = $this->request->cookie('token');
                 $token = new AccessToken(['access_token' => $token]);
 
-            } else {
-                return null;
-            }
         } else {
-            $token = new AccessToken(['access_token' => $token]);
+            return null;
         }
         return $token;
     }

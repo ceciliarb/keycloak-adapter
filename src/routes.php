@@ -20,7 +20,7 @@ Route::group(['middleware' => ['web']], function () {
             $state = session('oauth2state');
             $request->session()->flush();
             Cookie::forget('token');
-            return redirect($Keycloak->getLogoutUrl(['redirect_uri' => config('keycloak.redirectLogoutUri'), 'state' => '']));
+            return redirect($Keycloak->getLogoutUrl(['redirect_uri' => config('keycloak.redirectLogoutUri'), 'state' => $state]));
         })->name("logout");
     });
 

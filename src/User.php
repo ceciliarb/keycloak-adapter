@@ -96,8 +96,8 @@ class User implements Authenticatable
             $this->locale             = $arr_user['locale'] ?? '';
             $this->family_name        = $arr_user['family_name'] ?? '';
             $this->email              = $arr_user['email'] ?? '';
-            $this->allRoles           = $arr_user[$this->rolesName] ?? $allRoles;
-            $this->myRoles            = $myRoles;
+            $this->allRoles           = $allRoles;
+            $this->myRoles            = $arr_user[$this->rolesName] ?? $myRoles;
             $this->permissions        = $permissions ?? [];
         }
         return $this;
